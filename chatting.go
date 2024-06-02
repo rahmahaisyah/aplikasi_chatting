@@ -142,9 +142,9 @@ func main() {
 
 func userSelection(user *tab, chPri *tabChatpri, grups *tabGrup, n *int, b *int, nPesan *int, nGrups *int, maxPesanGrup *int) {
 	/*
-	IS. terdefinisi tipe bentukan array user, array chPri, array grups, variabel n, variabel b, variabel nPesan,
-	variabel nGrups, variabel maxPesanGrup. berisi masukan berupa variabel pilih
-	FS. Pengguna dapat melanjutkan ke procedure selanjutnya (login, registrasi) berdasarkan masukan
+		IS. terdefinisi tipe bentukan array user, array chPri, array grups, variabel n, variabel b, variabel nPesan,
+		variabel nGrups, variabel maxPesanGrup. berisi masukan berupa variabel pilih
+		FS. Pengguna dapat melanjutkan ke procedure selanjutnya (login, registrasi) berdasarkan masukan
 	*/
 	var pilih int
 	for pilih != 3 {
@@ -211,10 +211,10 @@ func admin(user *tab, n int) {
 
 func verifikasi(user *tab, n int) {
 	/*
-	IS. terdefinisi tipe bentukan array user dan variabel n, menampilkan data array yang belum terverifikasi
-	atau masih "pending", berisi masukan
-	FS. memperbarui data dalam array user, mengubah "pending" menjadi "accepted" atau "rejected",
-	mengeluarkan output "Semua akun sudah terverifikasi" apabila sudah terverifikasi semua.
+		IS. terdefinisi tipe bentukan array user dan variabel n, menampilkan data array yang belum terverifikasi
+		atau masih "pending", berisi masukan
+		FS. memperbarui data dalam array user, mengubah "pending" menjadi "accepted" atau "rejected",
+		mengeluarkan output "Semua akun sudah terverifikasi" apabila sudah terverifikasi semua.
 	*/
 	var username, email, notelp bool
 	var pilih int
@@ -344,9 +344,9 @@ func hapusAkun(user *tab, n *int) {
 
 func cetakDaftar(user *tab, n *int) {
 	/*
-	IS. terdefinisi tipe bentukan array user dan variabel n
-	FS. mengurutkan akun menggunakan INSERTION SORT SECARA ASCENDING, menampilkan daftar pengguna,
-	memperbarui array user dan variabel n jika pengguna memilih hapus akun
+		IS. terdefinisi tipe bentukan array user dan variabel n
+		FS. mengurutkan akun menggunakan INSERTION SORT SECARA ASCENDING, menampilkan daftar pengguna,
+		memperbarui array user dan variabel n jika pengguna memilih hapus akun
 	*/
 	var kembali int
 	for kembali != 2 {
@@ -394,10 +394,10 @@ func cetakDaftar(user *tab, n *int) {
 
 func login(user *tab, chPri *tabChatpri, grups *tabGrup, n *int, b *int, nPesan *int, nGrups *int, indexGrup *int) {
 	/*
-	IS. terdefinisi tipe bentukan array user, chPri, grups,
-	variabel n, b, nPesan, nGrups dan  indexGrup
-	FS. mengecek apakah username dan email yang dimasukkan sudah terdaftar atau belum,
-	jika sudah terdaftar maka akan masuk ke menu utama akun (chat), jika belum kembali meminta masukan
+		IS. terdefinisi tipe bentukan array user, chPri, grups,
+		variabel n, b, nPesan, nGrups dan  indexGrup
+		FS. mengecek apakah username dan email yang dimasukkan sudah terdaftar atau belum,
+		jika sudah terdaftar maka akan masuk ke menu utama akun (chat), jika belum kembali meminta masukan
 	*/
 	var username, email string
 	var autentifikasi bool
@@ -475,9 +475,9 @@ func chat(user *tab, chPri *tabChatpri, grups *tabGrup, n *int, b int, nPesan *i
 
 func chatPriv(user *tab, chPri *tabChatpri, n *int, b int, nPesan *int) {
 	/*
-	IS. terdefinisi tipe bentukan array user, chPri, n, b, nPesan.
-	FS. berisi daftar kontak dan masukan, mengoutput pesan jika sudah ada,
-	memperbarui array chPri sesuai masukan, menambahkan nilai nPesan
+		IS. terdefinisi tipe bentukan array user, chPri, n, b, nPesan.
+		FS. berisi daftar kontak dan masukan, mengoutput pesan jika sudah ada,
+		memperbarui array chPri sesuai masukan, menambahkan nilai nPesan
 	*/
 	var i, pilih, j int
 	var y int
@@ -496,7 +496,7 @@ func chatPriv(user *tab, chPri *tabChatpri, n *int, b int, nPesan *int) {
 	fmt.Scan(&pilih)
 	y = 1
 	found := false
-
+	//Sequential Search
 	for i := 0; i < *n && !found; i++ {
 		if i != b && user[i].isVerified == "accepted" {
 			if y == pilih {
@@ -601,6 +601,7 @@ func buatGrup(user tab, grups *tabGrup, n int, b int, nGrups *int) {
 
 	y = 1
 	found := false
+	//Sequential Search
 	for i := 0; i < n && !found; i++ {
 		if i != b && user[i].isVerified == "accepted" {
 			if y == pilih {
@@ -636,6 +637,7 @@ func buatGrup(user tab, grups *tabGrup, n int, b int, nGrups *int) {
 			pilihindex = pilih - 1
 			y = 1
 			found = false
+			//Sequential Search
 			for i := 0; i < n && !found; i++ {
 				if i != b && !isMember(grups[*nGrups].anggota, grups[*nGrups].nAnggota, user[i].username) && user[i].isVerified == "accepted" {
 					if y == pilih {
@@ -671,9 +673,9 @@ func isMember(anggota [NMAXpengguna]pengguna, nAnggota int, username string) boo
 
 func daftarGrup(user tab, grups *tabGrup, n int, b int, nGrups *int, indexGrup int) {
 	/*
-	IS. terdefinisi tipe bentukan array user, grups, n, b, nGrups dan  indexGrup.
-	FS. mengurutkan grup berdasarkan huruf SECARA ASCENDING MENGGUNAKAN SELECTION SORT,
-	menampilkan daftar grup yang dimiliki, mengarahkan ke procedure selanjutnya (chatGrup)
+		IS. terdefinisi tipe bentukan array user, grups, n, b, nGrups dan  indexGrup.
+		FS. mengurutkan grup berdasarkan huruf SECARA ASCENDING MENGGUNAKAN SELECTION SORT,
+		menampilkan daftar grup yang dimiliki, mengarahkan ke procedure selanjutnya (chatGrup)
 	*/
 	var y int
 	var i, j int
@@ -711,11 +713,11 @@ func daftarGrup(user tab, grups *tabGrup, n int, b int, nGrups *int, indexGrup i
 
 func chatGrup(user tab, grups *tabGrup, n *int, b int, nGrups *int, indexGrup *int) {
 	/*
-	IS. terdefinisi tipe bentukan array user, grups, n, b, nGrups dan  indexGrup.
-	berisi masukan pilih grup, output pesan yang tersimpan, pilihan(mengirim pesan,
-	lihat anggota grup, tambah akun, hapus akun)
-	FS. memperbarui array grups (tambah pesan), mengarahkan ke procedure tambah akun atau
-	hapus akun sesuai pilihan
+		IS. terdefinisi tipe bentukan array user, grups, n, b, nGrups dan  indexGrup.
+		berisi masukan pilih grup, output pesan yang tersimpan, pilihan(mengirim pesan,
+		lihat anggota grup, tambah akun, hapus akun)
+		FS. memperbarui array grups (tambah pesan), mengarahkan ke procedure tambah akun atau
+		hapus akun sesuai pilihan
 	*/
 	var y int
 	var pilih, pilihlagi, pilihpesan int
@@ -726,6 +728,7 @@ func chatGrup(user tab, grups *tabGrup, n *int, b int, nGrups *int, indexGrup *i
 	fmt.Scan(&pilih)
 	y = 1
 	found := false
+	//Sequential Search
 	for i := 0; i < *nGrups && !found; i++ {
 		for j := 0; j < grups[i].nAnggota; j++ {
 			if grups[i].anggota[j].username == user[b].username {
@@ -845,6 +848,7 @@ func tambahAnggota(user *tab, grups *tabGrup, n int, b int, indexGrup *int) {
 		pilihindex = pilih - 1
 		y = 1
 		found := false
+		//Sequential Search
 		for i = 0; i < n && !found; i++ {
 			if i != b && !isMember(grups[*indexGrup].anggota, grups[*indexGrup].nAnggota, user[i].username) && user[i].isVerified == "accepted" {
 				if y == pilih {
@@ -881,6 +885,7 @@ func tambahAnggota(user *tab, grups *tabGrup, n int, b int, indexGrup *int) {
 						pilihindex = pilih - 1
 						y = 1
 						found := false
+						//Sequential Search
 						for i = 0; i < n && !found; i++ {
 							if i != b && !isMember(grups[*indexGrup].anggota, grups[*indexGrup].nAnggota, user[i].username) {
 								if y == pilih {
@@ -910,10 +915,10 @@ func tambahAnggota(user *tab, grups *tabGrup, n int, b int, indexGrup *int) {
 
 func hapusAnggotaGrup(user *tab, grups *tabGrup, n int, b int, nGrups *int, indexGrup *int) {
 	/*
-	IS. terdefinisi tipe bentukan array user, grups, n, b, nGrups dan indexGrup.
-	berisi daftar pengguna yang ingin dihapus, masukan berupa pilih pengguna.
-	FS. mencari anggota yang ingin dihapus dari grup dalam array menggunakan
-	BINARY SEARCH, memperbarui array grups (anggota)
+		IS. terdefinisi tipe bentukan array user, grups, n, b, nGrups dan indexGrup.
+		berisi daftar pengguna yang ingin dihapus, masukan berupa pilih pengguna.
+		FS. mencari anggota yang ingin dihapus dari grup dalam array menggunakan
+		BINARY SEARCH, memperbarui array grups (anggota)
 	*/
 	var kanan, kiri, tengah int
 	var ketemu bool
