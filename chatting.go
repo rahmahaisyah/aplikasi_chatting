@@ -124,7 +124,7 @@ func main() {
 
 	for x != 3 {
 		fmt.Println("-------------------------")
-		fmt.Println("    Welcome to ChatMe!   ")
+		fmt.Println("    Welcome to ChatMe!    ")
 		fmt.Println("Teman chatting setiamu ^^")
 		fmt.Println("-------------------------")
 		fmt.Println("Apakah kamu Pengguna atau Admin?")
@@ -148,7 +148,7 @@ func userSelection(user *tab, chPri *tabChatpri, grups *tabGrup, n *int, b *int,
 	*/
 	var pilih int
 	for pilih != 3 {
-		fmt.Print()
+		fmt.Println()
 		fmt.Println("Apakah anda sudah memiliki akun sebelumnya?")
 		fmt.Println("Jika sudah pilih Login, jika tidak pilih registrasi :")
 		fmt.Println("1. Login")
@@ -539,6 +539,7 @@ func chatPriv(user *tab, chPri *tabChatpri, n *int, b int, nPesan *int) {
 		fmt.Println("2. Tidak")
 		fmt.Scan(&pilihpesan)
 		if pilihpesan == 1 {
+			fmt.Println("Masukkan pesan anda...")
 			fmt.Scan(&pesan)
 			chPri[*nPesan].pengirim.username = user[b].username
 			chPri[*nPesan].penerima.username = user[pilihindex].username
